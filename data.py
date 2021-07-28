@@ -1,3 +1,4 @@
+
 letters_to_morse = {
     "A": ".-",
     "B": "-...",
@@ -57,4 +58,5 @@ letters_to_morse = {
     "\n": "\n",
 }
 
+# Creates inverse dictionary of {letters_to_morse}
 morse_to_letters = {value: key for (key, value) in letters_to_morse.items()}

@@ -12,8 +12,8 @@ def translate_text(text_input: str):
     """Takes text input as string, translates to Morse Code & runs update_result_text(translated text)."""
     text = text_input.upper()
     translated_list = []
-    # converts characters in {text} to corresponding values in {letters_to_morse} and appends to {translated_list}
-    # includes error handling for invalid characters not in {letters_to_morse}, returning error messagebox
+    # Converts characters in {text} to corresponding values in {letters_to_morse} and appends to {translated_list}
+    # Includes error handling for invalid characters not in {letters_to_morse}, returning error messagebox
     for letter in text:
         try:
             new_code = letters_to_morse[letter]
@@ -22,7 +22,7 @@ def translate_text(text_input: str):
             messagebox.showinfo(title="Error", message=f"Invalid character '{letter}'.")
             break
     result = ""
-    # converts {translated_list} to string {result}
+    # Converts {translated_list} to string {result}
     for code in translated_list:
         result += f"{code} "
     update_result_text(result)
@@ -30,11 +30,11 @@ def translate_text(text_input: str):
 
 def translate_code(code_input: str):
     """Takes Morse Code input as string, translates to text & runs update_result_text(translated code)."""
-    # creates list of all word blocks of {code_input}
+    # Creates list of characters from {code_input}
     code_list = code_input.split()
     translated_list = []
-    # converts word blocks in {code_list} to corresponding values in {morse_to_letters} and appends to {translated_list}
-    # includes error handling for invalid word blocks not in {morse_to_letters}, returning error messagebox
+    # Converts characters in {code_list} to corresponding values in {morse_to_letters} and appends to {translated_list}
+    # Includes error handling for invalid characters not in {morse_to_letters}, returning error messagebox
     for code in code_list:
         try:
             new_letter = morse_to_letters[code]
@@ -43,14 +43,14 @@ def translate_code(code_input: str):
             messagebox.showinfo(title="Error", message=f"Invalid character '{code}'.\nCheck your input and mode.")
             break
     result = ""
-    # converts {translated_list} to string {result}
+    # Converts {translated_list} to string {result}
     for char in translated_list:
         result += f"{char}"
     update_result_text(result)
 
 
 def execute_translation():
-    """Gets string input from Input Box and runs selected mode (translate_text or translate_code) on the string"""
+    """Gets string input from Input Box and runs selected mode (translate_text or translate_code) on the string."""
     to_translate = entry_input.get("1.0", "end")
     if translation_mode.get() == "Text to Morse Code":
         translate_text(to_translate)
@@ -59,19 +59,19 @@ def execute_translation():
 
 
 def apply_uppercase():
-    """Converts text in Result Box to uppercase"""
+    """Converts text in Result Box to uppercase."""
     upper_text = result_output.get("1.0", "end").upper()
     update_result_text(upper_text)
 
 
 def apply_lowercase():
-    """Converts text in Result Box to lowercase"""
+    """Converts text in Result Box to lowercase."""
     lower_text = result_output.get("1.0", "end").lower()
     update_result_text(lower_text)
 
 
 def update_result_text(output):
-    """Clears Result Box and inserts inputted string"""
+    """Clears Result Box and inserts inputted string."""
     result_output.delete(1.0, END)
     result_output.insert(END, output)
 
